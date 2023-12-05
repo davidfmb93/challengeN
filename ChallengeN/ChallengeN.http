@@ -1,0 +1,6 @@
+@ChallengeN_HostAddress = http://localhost:5014
+
+GET {{ChallengeN_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
