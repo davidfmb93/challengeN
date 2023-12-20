@@ -1,20 +1,67 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# ChallengeN
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+## Install
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+You should have installed
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+* Docker
+* Docker Compose
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+You have differents alternatives to install the program:
+
+1. You can execute the following lines using bash:
+```sh
+bash install.sh #first time
+bash start.sh  #When you need running the program again
+```
+
+2. You can install program using The Makefile but you should install  [chocolatey](https://chocolatey.org/install). After that, run in command line: 
+
+```sh
+make INSTALL #first time
+make RUN #When you need running the program again
+```
+
+3. You can lunch the program using docker-compose commands
+
+When you run the previous commands you can go to the following link http://localhost:7201/swagger
+
+## Tables
+- 0 => Employee
+- 1 => Permission
+- 2 => Role
+
+# Uses Cases
+
+Create Rol
+
+{
+  "name": "Admin"
+}
+
+After create a role you can create Employee and Permissions with the rol id.
+7a249fe1-593f-4051-8d09-fb47a12aeb53
+## Connection DB
+
+```
+Server: localhost, 1433
+Authentication type: SQL Login
+user name: sa
+database: master
+Password: S3cur3P@ssW0rd!
+```
+
+### Diagram DB
+
+![Diagram DB](https://drive.google.com/uc?id=1KUHK2QgxnuFITLspn_DSWeqmW3KLAp_i)
+
+
+## UML
+
+<img src="https://drive.google.com/uc?id=1QqzYbmU_YxQwiD2EerHkhinipTIX1rPo" data-canonical-src="https://drive.google.com/uc?id=1QqzYbmU_YxQwiD2EerHkhinipTIX1rPo" width="500" />
+
+## More Information
+
+Contact: 
+Email: davidfmb93@gmail.com
+Github: https://github.com/davidfmb93
