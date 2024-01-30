@@ -1,6 +1,7 @@
 # ChallengeN
 
-This mini project has been instrumental in showcasing the skills I've cultivated in the realm of development. While it may seem straightforward at first glance, it required a significant level of complexity to achieve a dynamic and effective environment
+This project has been instrumental in showcasing the skills I've cultivated in the realm of development. While it may seem straightforward at first glance, it required a significant level of complexity to achieve a dynamic and effective environment
+
 ## Install
 
 You should have installed
