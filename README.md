@@ -35,14 +35,12 @@ When you run the previous commands you can go to the following link http://local
 
 Create Rol
 
-```json
 {
   "name": "Admin"
 }
-```
 
 After create a role you can create Employee and Permissions with the rol id.
-
+7a249fe1-593f-4051-8d09-fb47a12aeb53
 ## Connection DB
 
 ```

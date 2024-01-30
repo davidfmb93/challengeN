@@ -21,9 +21,9 @@ builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddMediatorRegistration(builder.Configuration);
 builder.Services.AddRepositoryRegistration(builder.Configuration);
 builder.Services.AddDatabaseConfig(builder.Configuration);
-builder.Services.AddElasticsearchConfig(builder.Configuration);
-builder.Services.AddSerilogConfig(builder.Configuration);
 builder.Services.AddSwaggerGen();
+
+builder.AddSerilogConfig(builder.Configuration);
 
 var app = builder.Build();
 
@@ -36,7 +36,7 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
 
     var context = services.GetRequiredService<CNDbContext>();
-    if (context.Database.GetPendingMigrations().Any())
+    if (context != null && context.Database.GetPendingMigrations().Any())
     {
         Console.WriteLine("With migrations");
         context.Database.Migrate();

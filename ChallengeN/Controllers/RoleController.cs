@@ -1,6 +1,7 @@
 ﻿using ChallengeN.Application.Commands;
 using ChallengeN.Application.Queries;
 using ChallengeN.Configuration;
+using ChallengeN.Domain.Dto.Common;
 using ChallengeN.Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -39,7 +40,7 @@ public class RoleController : ControllerBase
 
     [HttpPost]
     [ProducesResponseType(201)]
-    public async Task<ActionResult<Role>> Post([FromBody] CreateRoleCommand createRoleCommand)
+    public async Task<ActionResult<ResponseDto>> Post([FromBody] CreateRoleCommand createRoleCommand)
     {
         try
         {
@@ -56,7 +57,7 @@ public class RoleController : ControllerBase
     [HttpPut("{id}")]
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
-    public async Task<ActionResult<Role>> Put(Guid id, [FromBody] UpdateRoleCommand updateRoleCommand)
+    public async Task<ActionResult<ResponseDto>> Put(Guid id, [FromBody] UpdateRoleCommand updateRoleCommand)
     {
         try
         {

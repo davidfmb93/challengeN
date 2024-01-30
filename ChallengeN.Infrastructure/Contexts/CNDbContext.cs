@@ -14,6 +14,16 @@ public class CNDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+
+        var entityEmployeeBuilder = modelBuilder.Entity<Employee>();
+        entityEmployeeBuilder.Property(r => r.Id).HasDefaultValueSql("NEWSEQUENTIALID()");
+
+        var entityRoleBuilder = modelBuilder.Entity<Role>();
+        entityEmployeeBuilder.Property(r => r.Id).HasDefaultValueSql("NEWSEQUENTIALID()");
+
+        var entityRolePermissionBuilder = modelBuilder.Entity<Role>();
+        entityEmployeeBuilder.Property(r => r.Id).HasDefaultValueSql("NEWSEQUENTIALID()");
+
         modelBuilder.Entity<RolePermission>()
             .HasKey(rp => new { rp.RoleId, rp.PermissionId });
 

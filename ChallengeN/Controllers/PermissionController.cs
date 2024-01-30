@@ -1,6 +1,8 @@
-﻿using ChallengeN.Application.Commands;
+﻿using AutoMapper;
+using ChallengeN.Application.Commands;
 using ChallengeN.Application.Queries;
 using ChallengeN.Configuration;
+using ChallengeN.Domain.Dto.Common;
 using ChallengeN.Domain.Models;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -15,11 +17,13 @@ public class PermissionController : ControllerBase
 {
     private readonly IMediator _mediator;
     private readonly ILogger<PermissionController> _logger;
+    private readonly IMapper _mapper;
 
-    public PermissionController(IMediator mediator, ILogger<PermissionController> logger)
+    public PermissionController(IMediator mediator, ILogger<PermissionController> logger, IMapper mapper)
     {
         _mediator = mediator;
         _logger = logger;
+        _mapper = mapper;
     }
 
     [HttpGet("{id}")]
@@ -39,11 +43,20 @@ public class PermissionController : ControllerBase
 
     [HttpPost]
     [ProducesResponseType(201)]
-    public async Task<ActionResult<Permission>> Post([FromBody] CreatePermissionCommand createPermissionCommand)
+    public async Task<ActionResult<ResponseDto>> Post([FromBody] CreatePermissionCommand createPermissionCommand)
     {
         try
         {
-            var record = await _mediator.Send(createPermissionCommand);
+            var record = _mapper.Map<ResponseDto>(await _mediator.Send(createPermissionCommand));
+
+            if(record != null)
+            {
+                _logger.LogInformation($"{nameof(Permission)} with id: {record.Id} has been created");
+            }
+            else
+            {
+                _logger.LogInformation($"{nameof(Permission)}  has not been created : {createPermissionCommand}");
+            }
             return CreatedAtAction(nameof(Post), record);
         }
         catch (Exception ex)
@@ -56,7 +69,7 @@ public class PermissionController : ControllerBase
     [HttpPut("{id}")]
     [ProducesResponseType(200)]
     [ProducesResponseType(404)]
-    public async Task<ActionResult<Permission>> Put(Guid id, [FromBody] UpdatePermissionCommand updatePermissionCommand)
+    public async Task<ActionResult<ResponseDto>> Put(Guid id, [FromBody] UpdatePermissionCommand updatePermissionCommand)
     {
         try
         {
